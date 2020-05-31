@@ -33,4 +33,9 @@ public class StringCalculatorTest {
     public void shouldAcceptNewLineAsADelimiter() {
         assertEquals(14, stringCalculator.Add("7\n3,4"));
     }
+
+    @Test
+    public void shouldAcceptCustomDelimiter() {
+        assertEquals(3, stringCalculator.Add("//;\n1;2"));
+    }
 }

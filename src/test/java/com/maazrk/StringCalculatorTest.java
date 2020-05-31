@@ -24,4 +24,9 @@ public class StringCalculatorTest {
         assertEquals(7, stringCalculator.Add("4,3"));
     }
 
+    @Test
+    public void shouldReturnSumOfMoreThanTwoNumbers() {
+        assertEquals(14, stringCalculator.Add("7,3,4"));
+    }
+
 }

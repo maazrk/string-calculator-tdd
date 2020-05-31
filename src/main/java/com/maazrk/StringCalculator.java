@@ -38,11 +38,11 @@ public class StringCalculator {
         String pattern = ",|\n";
 
         if (numbers.startsWith("//")) {
-            Matcher m = Pattern.compile("//(.)\n(.*)").matcher(numbers);
+            Matcher m = Pattern.compile("//\\[?(.*?)\\]?\n(.*)").matcher(numbers);
             m.matches();
             pattern = m.group(1);
             String parsedString = m.group(2);
-            return parsedString.split(pattern);
+            return parsedString.split(Pattern.quote(pattern));
         }
         return numbers.split(pattern);
 

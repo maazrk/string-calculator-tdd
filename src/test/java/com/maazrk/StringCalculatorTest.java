@@ -83,4 +83,14 @@ public class StringCalculatorTest {
     public void shouldIgnoreNumbersGreaterThan1000() {
         assertEquals(1, stringCalculator.Add("1001,1"));
     }
+
+    @Test
+    public void shouldSupportDelimiterOfLengthThree() {
+        assertEquals(6, stringCalculator.Add("//[***]\n1***2***3"));
+    }
+
+    @Test
+    public void shouldSupportDelimiterOfLengthFive() {
+        assertEquals(10, stringCalculator.Add("//[%%%%%]\n1%%%%%2%%%%%7"));
+    }
 }

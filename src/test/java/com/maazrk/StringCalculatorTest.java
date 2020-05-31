@@ -93,4 +93,19 @@ public class StringCalculatorTest {
     public void shouldSupportDelimiterOfLengthFive() {
         assertEquals(10, stringCalculator.Add("//[%%%%%]\n1%%%%%2%%%%%7"));
     }
+
+    @Test
+    public void shouldSupportMultipleCustomDelimiters() {
+        assertEquals(6, stringCalculator.Add("//[*][%]\n1*2%3"));
+    }
+
+    @Test
+    public void shouldSupportMultipleCustomDelimitersWithLengthGreaterThanOne() {
+        assertEquals(6, stringCalculator.Add("//[**][%%]\n1**2%%3"));
+    }
+
+    @Test
+    public void shouldSupportCustomDelimitersOfDifferentLengths() {
+        assertEquals(20, stringCalculator.Add("//[*******][%%]\n10*******7%%3"));
+    }
 }

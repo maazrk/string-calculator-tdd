@@ -41,8 +41,17 @@ public class StringCalculator {
             Matcher m = Pattern.compile("//\\[?(.*?)\\]?\n(.*)").matcher(numbers);
             m.matches();
             pattern = m.group(1);
+            String[] patterns = pattern.split("\\]\\["); // Splitting multiple delimiters
+            String finalPattern = Pattern.quote(patterns[0]);
+
+            int iterator = 1;
+            while (iterator < patterns.length)  {
+                finalPattern += "|" + Pattern.quote(patterns[iterator]);
+                iterator++;
+            }
+
             String parsedString = m.group(2);
-            return parsedString.split(Pattern.quote(pattern));
+            return parsedString.split(finalPattern);
         }
         return numbers.split(pattern);
 

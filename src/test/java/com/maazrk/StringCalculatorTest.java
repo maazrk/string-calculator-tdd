@@ -3,12 +3,19 @@ package src.test.java.com.maazrk;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import src.main.java.com.maazrk.StringCalculator;
 
 public class StringCalculatorTest {
-    StringCalculator stringCalculator = new StringCalculator();
+    StringCalculator stringCalculator;
+
+
+    @Before
+    public void init() {
+        stringCalculator = new StringCalculator();
+    }
 
     @Test
     public void emptyStringShouldReturnZero() {
@@ -62,5 +69,13 @@ public class StringCalculatorTest {
         catch(RuntimeException ex) {
             assertEquals("negatives not allowed: [-1, -2]", ex.getMessage());
         }
+    }
+
+    @Test
+    public void shouldReturnTheNumberOfTimesAddWasCalled() {
+        stringCalculator.Add("");
+        stringCalculator.Add("1,2");
+        stringCalculator.Add("1\n3");
+        assertEquals(3, stringCalculator.GetCalledCount());
     }
 }

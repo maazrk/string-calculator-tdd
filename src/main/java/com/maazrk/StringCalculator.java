@@ -5,8 +5,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+    int calledCount;
+
+    public StringCalculator() {
+        this.calledCount = 0;
+    }
 
     public int Add(String numbers) {
+        this.calledCount += 1;
         if (numbers == "") {
             return 0;
         }
@@ -19,6 +25,10 @@ public class StringCalculator {
             }
             return sum;
         }
+    }
+
+    public int GetCalledCount() {
+        return calledCount;
     }
 
     private String[] getTokens(String numbers) {

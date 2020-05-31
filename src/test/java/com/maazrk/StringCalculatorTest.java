@@ -29,4 +29,8 @@ public class StringCalculatorTest {
         assertEquals(14, stringCalculator.Add("7,3,4"));
     }
 
+    @Test
+    public void shouldAcceptNewLineAsADelimiter() {
+        assertEquals(14, stringCalculator.Add("7\n3,4"));
+    }
 }

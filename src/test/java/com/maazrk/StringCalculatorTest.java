@@ -1,6 +1,7 @@
 package src.test.java.com.maazrk;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -37,5 +38,29 @@ public class StringCalculatorTest {
     @Test
     public void shouldAcceptCustomDelimiter() {
         assertEquals(3, stringCalculator.Add("//;\n1;2"));
+    }
+
+    @Test
+    public void shouldThrowExceptionIfANegativeNumberIsGiven() {
+
+        try {
+            stringCalculator.Add("//;\n-1;2");
+            fail("Exception should be thrown");
+        }
+        catch(RuntimeException ex) {
+            assertEquals("negatives not allowed: [-1]", ex.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldThrowExceptionIfMultipleNegativeNumbersAreGiven() {
+
+        try {
+            stringCalculator.Add("//;\n-1;-2");
+            fail("Exception should be thrown");
+        }
+        catch(RuntimeException ex) {
+            assertEquals("negatives not allowed: [-1, -2]", ex.getMessage());
+        }
     }
 }

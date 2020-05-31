@@ -1,5 +1,6 @@
 package src.main.java.com.maazrk;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,10 +11,11 @@ public class StringCalculator {
             return 0;
         }
         else {
-            String[] nums = getTokens(numbers);
+            int[] nums = Arrays.asList(getTokens(numbers)).stream().mapToInt(Integer::parseInt).toArray();
+            validateTokens(nums);
             int sum = 0;
-            for (String token : nums) {
-                sum += Integer.parseInt(token);
+            for (int token : nums) {
+                sum += token;
             }
             return sum;
         }
@@ -31,6 +33,14 @@ public class StringCalculator {
         }
         return numbers.split(pattern);
 
+    }
+
+    private void validateTokens(int[] tokens) {
+        //Check for negatives
+        int[] negatives = Arrays.stream(tokens).filter(x -> x < 0).toArray();
+        if (negatives.length > 0) {
+            throw new RuntimeException("negatives not allowed: " + Arrays.toString(negatives));
+        }
     }
 
 }

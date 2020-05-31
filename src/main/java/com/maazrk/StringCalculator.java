@@ -21,7 +21,10 @@ public class StringCalculator {
             validateTokens(nums);
             int sum = 0;
             for (int token : nums) {
-                sum += token;
+                if (token <= 1000) {
+                    sum += token;
+            
+                }
             }
             return sum;
         }

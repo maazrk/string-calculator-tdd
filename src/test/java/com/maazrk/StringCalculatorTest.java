@@ -78,4 +78,9 @@ public class StringCalculatorTest {
         stringCalculator.Add("1\n3");
         assertEquals(3, stringCalculator.GetCalledCount());
     }
+
+    @Test
+    public void shouldIgnoreNumbersGreaterThan1000() {
+        assertEquals(1, stringCalculator.Add("1001,1"));
+    }
 }
